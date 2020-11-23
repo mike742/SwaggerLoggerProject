@@ -45,8 +45,8 @@ namespace SwaggerLoggerProject
 
             app.UseMvc();
 
-            //app.UseDefaultFiles();
-            //app.UseStaticFiles();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
