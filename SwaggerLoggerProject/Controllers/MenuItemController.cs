@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using SwaggerLoggerProject.Data;
 using SwaggerLoggerProject.Models;
 using System;
@@ -15,11 +16,23 @@ namespace SwaggerLoggerProject.Controllers
     public class MenuItemController : ControllerBase
     {
         private readonly AppDbContext _dbc = new AppDbContext();
+        private readonly ILogger<MenuItemController> _logger;
+
+        public MenuItemController(ILogger<MenuItemController> logger)
+        {
+            _logger = logger;
+        }
 
         // GET: api/<MenuItemController>
         [HttpGet]
         public IEnumerable<MenuItem> Get()
         {
+            /*
+            _logger.LogInformation("The Get MenuItem was invoked!");
+            _logger.LogWarning("This is Warning!");
+            _logger.LogError("This is Error");
+            _logger.LogCritical("This is something critical!!!");
+            */
             return _dbc.MenuItems.ToList();
         }
 
