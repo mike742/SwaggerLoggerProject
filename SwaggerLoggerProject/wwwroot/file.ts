@@ -1,11 +1,44 @@
-﻿let message: string = "Hello TypeScript";
+﻿class MiValidation {
 
-console.log(message);
+    MiPriceValidation() {
 
-class Person {
-    constructor(public Name: string) { }
+        let element = document.getElementById('inputMiName');
+        // ERRROR is here!!!
+        let input = element.value;
+
+
+        let output = document.getElementById('miPriceValidationMessage');
+
+        if (isNaN(input)) {
+            output.innerHTML = "<span style='color: red'>* Field Price should be Numeric</span>";
+        }
+        else if (input.length === 0) {
+            output.innerHTML = "<span style='color: red'>* Field Price is required</span>";
+        }
+        else {
+            output.innerHTML = '';
+        }
+    }
+
+    miNameValidation(element) {
+        let input = element.value;
+        let output = document.getElementById('miNameValidationMessage');
+
+        if (input.length === 0) {
+            output.innerHTML = "<span style='color: red'>* Field Name is required</span>";
+        }
+        else {
+            output.innerHTML = '';
+        }
+
+        console.log(element.value);
+    }
 }
 
-let p1 = new Person("John");
+window.onload = () => {
 
-console.log( "Hello " + p1.Name );
+    let obj = new MiValidation();
+    let nameInput = document.getElementById('inputMiName');
+
+    nameInput.onblur = obj.miNameValidation;
+}

@@ -27,12 +27,12 @@ namespace SwaggerLoggerProject.Controllers
         [HttpGet]
         public IEnumerable<MenuItem> Get()
         {
-            /*
+           /*
             _logger.LogInformation("The Get MenuItem was invoked!");
             _logger.LogWarning("This is Warning!");
             _logger.LogError("This is Error");
             _logger.LogCritical("This is something critical!!!");
-            */
+           */
             return _dbc.MenuItems.ToList();
         }
 
