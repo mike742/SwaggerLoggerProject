@@ -2,10 +2,9 @@
 using Microsoft.Extensions.Logging;
 using SwaggerLoggerProject.Data;
 using SwaggerLoggerProject.Models;
-using System;
+using SwaggerLoggerProject.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -45,10 +44,17 @@ namespace SwaggerLoggerProject.Controllers
 
         // POST api/<MenuItemController>
         [HttpPost]
-        public void Post([FromBody] MenuItem value)
+        public void Post([FromBody] MenuItemViewModel value)
         {
-            value.Id = _dbc.MenuItems.Last().Id + 1;
-            _dbc.MenuItems.Add(value);
+            int id = _dbc.MenuItems.Last().Id + 1;
+
+            MenuItem mi = new MenuItem { 
+                Id = id,
+                Name = value.Name,
+                Price = value.Price
+            };
+
+            _dbc.MenuItems.Add(mi);
             _dbc.SaveChanges();
         }
 

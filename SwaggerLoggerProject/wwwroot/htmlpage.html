@@ -69,30 +69,25 @@
 
             <hr />
             Name: <br>
-            <input id="inputMiName" /> <br>
-            <p id="miNameValidationMessage"></p>
+            <input id="inputName" /> <br>
+            <p id="nameValidationMessage"></p>
             Price: <br>
-            <input id="inputMiPrice"  /> <br>
-            <p id="miPriceValidationMessage"></p>
+            <input id="inputPrice" /> <br>
+            <p id="priceValidationMessage"></p>
+
+            Email: <br>
+            <input id="inputEmail" /> <br>
+            <p id="emailValidationMessage"></p>
 
             <button type="button" id="btnAddMenuItem" onclick="addData()">
                 Add Menu Item
             </button>
+            <p id="resultMessage"></p>
+
         </div>
     </div>
 
     <script>
-        /*
-        function miPriceValidation(element) {
-
-        }
-
-        function miNameValidation(element) {
-
-
-        }
-        */
-
         // Get the modal
         var modal = document.getElementById("myModal");
 
@@ -146,12 +141,12 @@
 
         function addData() {
 
-            debugger;
+            //debugger;
 
-            let name = $("#inputMiName").val();
-            let price = $("#inputMiPrice").val();
+            let name = $("#inputName").val();
+            let price = $("#inputPrice").val();
 
-            let menuItem = { "id": '0', "name": name, "price": price };
+            let menuItem = { "name": name, "price": price };
 
             $.ajax({
                 type: 'post',
@@ -159,10 +154,14 @@
                 data: JSON.stringify(menuItem),
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
+                    document.getElementById('resultMessage')
+                        .innerHTML = "<span style='color: green'>Your data has been add seccessully!</span>";
+                    document.getElementById('btnAddMenuItem').disabled = true;
 
                 },
                 error: function (data) {
-                    console.log(data);
+                    document.getElementById('resultMessage')
+                        .innerHTML = "Something wrong!!!"
                 }
             });
         }
