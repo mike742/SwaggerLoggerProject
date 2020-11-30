@@ -57,7 +57,7 @@ namespace SwaggerLoggerProject
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v2/swagger.json", "Test API");
-                c.RoutePrefix = string.Empty;
+                c.RoutePrefix = "swagger";
 
             });
         }

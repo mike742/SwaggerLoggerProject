@@ -34,7 +34,7 @@ var Validation = /** @class */ (function () {
         var element = document.getElementById('inputEmail');
         var output = document.getElementById('emailValidationMessage');
         var input = element.value;
-        var mailRE = /^([a-zA-Z0-9_\-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        var mailRE = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
         if (!input.match(mailRE)) {
             output.innerHTML = "<span style='color: red'>* You have entered wrong email</span>";
         }
@@ -45,44 +45,14 @@ var Validation = /** @class */ (function () {
     return Validation;
 }());
 window.onload = function () {
-    var modal = document.getElementById("myModal");
-    var modalEdit = document.getElementById("myModalEdit");
-    var modalDelete = document.getElementById("myModalDelete");
-    var btn = document.getElementById("myBtn");
-    var btnEdit = document.getElementById("myBtnEdit");
-    var btnDelete = document.getElementById("myBtnDelete");
-    var span = document.getElementsByClassName("close")[0];
-    var spanCloseEdit = document.getElementById("closeEditMenuItem");
-    var spanCloseDelete = document.getElementById("closeDeleteMenuItem");
-    btn.onclick = function () {
-        modal.style.display = "block";
-    };
-    btnEdit.onclick = function () {
-        modalEdit.style.display = "block";
-    };
-    btnDelete.onclick = function () {
-        modalDelete.style.display = "block";
-    };
-    span.onclick = function () {
-        modal.style.display = "none";
-    };
-    spanCloseEdit.onclick = function () {
-        modalEdit.style.display = "none";
-    };
-    spanCloseDelete.onclick = function () {
-        modalDelete.style.display = "none";
-    };
-    window.onclick = function (event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    };
     var obj = new Validation();
-    var nameInput = document.getElementById('inputName'); // undefined
+    var nameInput = document.getElementById('inputName');
     var priceInput = document.getElementById('inputPrice');
-    if (nameInput !== undefined)
-        nameInput.onblur = obj.NameValidation;
-    if (priceInput !== undefined)
-        priceInput.onblur = obj.PriceValidation;
+    var emailInput = document.getElementById('inputEmail');
+    //document.getElementById('myName').onblur = obj.NameValidation;
+    //document.getElementById('myFirstName').onblur = obj.NameValidation;
+    //document.getElementById('myFirstName').onblur = obj.NameValidation;
+    nameInput.onblur = obj.NameValidation;
+    priceInput.onblur = obj.PriceValidation;
+    emailInput.onblur = obj.EmailValidation;
 };
-//# sourceMappingURL=script.js.map

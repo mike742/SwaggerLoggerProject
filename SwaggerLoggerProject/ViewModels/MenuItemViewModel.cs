@@ -9,5 +9,6 @@ namespace SwaggerLoggerProject.ViewModels
     {
         public string Name { set; get; }
         public double Price { set; get; }
+        public byte[] Image { set; get; }
     }
 }
